@@ -8,6 +8,8 @@ import Link from 'next/link';
 import { Mail, Lock } from 'lucide-react';
 import InputText from '@/components/ui/inputText';
 import { isEmpty } from 'lodash';
+import Image from 'next/image';
+import Button from '@components/ui/button';
 
 export default function SignInPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,8 +41,11 @@ export default function SignInPage() {
         <main className='flex min-h-screen flex-col p-6'>
             <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
                 <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
-                    <img
+                    <Image
                         alt='Your Company'
+                        width={40}
+                        height={40}
+                        priority
                         src='https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600'
                         className='mx-auto h-10 w-auto'
                     />
@@ -59,6 +64,7 @@ export default function SignInPage() {
                                     label='Email'
                                     type='email'
                                     placeholder='Enter your email address'
+                                    loading={isSubmitting}
                                     control={control}
                                     icon={<Mail className='w-4 h-4 text-gray-500' />}
                                 />
@@ -68,17 +74,21 @@ export default function SignInPage() {
                                     label='Password'
                                     type='password'
                                     placeholder='Enter your password'
+                                    loading={isSubmitting}
                                     control={control}
                                     icon={<Lock className='w-4 h-4 text-gray-500' />}
                                 />
                             </div>
-                            <button
+                            <Button
                                 type='submit'
+                                label={isSubmitting ? 'Signing in...' : 'Sign in'}
+                                icon={<Lock className='w-4 h-4' />}
+                                iconPosition='left'
+                                loading={isSubmitting}
+                                variant='primary'
+                                size='medium'
                                 disabled={isSubmitting || !isEmpty(control._formState.errors)}
-                                className='flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-                            >
-                                {isSubmitting ? 'Signing in...' : 'Sign in'}
-                            </button>
+                            />
                         </form>
                         <p className='mt-6 text-center text-sm/6 text-gray-500'>
                             Not a member?{' '}

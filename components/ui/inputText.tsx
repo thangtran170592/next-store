@@ -13,8 +13,30 @@ type InputFieldProps = {
     variant?: 'filled' | 'outlined';
     size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
+    loading?: boolean;
     required?: boolean;
     control: Control<any>;
+};
+
+const variantClass = {
+    filled: {
+        base: 'bg-gray-50 border-transparent',
+        hover: 'hover:bg-gray-100',
+        focus: 'focus:bg-white focus:border-blue-600',
+        error: 'focus:border-red-500',
+    },
+    outlined: {
+        base: 'bg-white border border-gray-300',
+        hover: 'hover:bg-gray-100',
+        focus: 'focus:bg-white focus:border-blue-600',
+        error: 'focus:border-red-500',
+    },
+};
+
+const sizeClass = {
+    small: 'text-sm py-1',
+    medium: 'text-base py-2',
+    large: 'text-lg py-3',
 };
 
 export default function InputText({
@@ -29,6 +51,7 @@ export default function InputText({
     disabled = false,
     variant = 'outlined',
     required = false,
+    loading = false,
     control,
     size = 'medium',
 }: InputFieldProps) {
@@ -39,20 +62,7 @@ export default function InputText({
         name,
         control,
     });
-    const variantClass = {
-        filled: {
-            base: 'bg-gray-50 border-transparent',
-            hover: 'hover:bg-gray-100',
-            focus: 'focus:bg-white focus:border-blue-600',
-            error: 'focus:border-red-500',
-        },
-        outlined: {
-            base: 'bg-white border border-gray-300',
-            hover: 'hover:bg-gray-100',
-            focus: 'focus:bg-white focus:border-blue-600',
-            error: 'focus:border-red-500',
-        },
-    };
+
     return (
         <div className='flex flex-col w-full gap-2'>
             {label && (
@@ -74,7 +84,7 @@ export default function InputText({
                     type={type}
                     placeholder={placeholder}
                     value={value}
-                    disabled={disabled}
+                    disabled={disabled || loading}
                     ref={ref}
                     onBlur={onBlur}
                     onChange={onChange}
@@ -90,9 +100,7 @@ export default function InputText({
                         variantClass[variant].hover,
                         variantClass[variant].focus,
                         error ? variantClass[variant].error : '',
-                        size === 'small' && 'text-sm py-1',
-                        size === 'medium' && 'text-base py-2',
-                        size === 'large' && 'text-lg py-3',
+                        sizeClass[size],
                         className,
                     )}
                 />
