@@ -20,6 +20,7 @@ export default function RegisterPage() {
     });
 
     const onSubmit = async (data: RegisterPayload) => {
+        console.log('Data:', data);
         if (isSubmitting) return;
         try {
             setIsSubmitting(true);
@@ -52,14 +53,7 @@ export default function RegisterPage() {
                     placeholder='Enter your last name'
                     control={control}
                 />
-                <InputField
-                    id='email'
-                    label='Email'
-                    name='email'
-                    type='email'
-                    placeholder='Enter your email'
-                    control={control}
-                />
+                <InputField id='email' label='Email' name='email' type='email' placeholder='Enter your email' control={control} />
                 <InputField
                     id='password'
                     label='Password'
