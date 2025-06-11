@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
+  console.log("Middleware triggered for request:", request.url);
   // Add your middleware logic here
   return NextResponse.next();
 }

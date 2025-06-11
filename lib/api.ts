@@ -1,9 +1,19 @@
 const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000') + '/api';
 
+export async function fetchApiDataPagination<T>(url?: string, limit?: number, page?: number, options?: RequestInit): Promise<T> {
+    try {
+        const currentUrl = url ? `/${url}?` : '?';
+        const response = await fetch(`${baseUrl}${currentUrl}limit=${limit}&page=${page}`, options);
+        return response.json();
+    } catch (error) {
+        console.error('Fetch API error:', error);
+        throw error;
+    }
+}
+
 export async function fetchApiData<T>(url: string, options?: RequestInit): Promise<T> {
     try {
         const response = await fetch(`${baseUrl}/${url}`, options);
-        console.log('Response:', response);
         return response.json();
     } catch (error) {
         console.error('Fetch API error:', error);

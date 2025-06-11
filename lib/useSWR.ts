@@ -1,7 +1,7 @@
 import { SWRConfiguration } from 'swr';
 import useSWR from 'swr';
-import { deleteApiData, fetchApiData, postApiData, putApiData } from './api';
-import { BaseResponseType } from '@/types/base-response';
+import { deleteApiData, fetchApiData, fetchApiDataPagination, postApiData, putApiData } from './api';
+import { PaginationResponse, SuccessResponse } from '@/types/base-response';
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
@@ -16,6 +16,26 @@ export const swrConfig = {
     //loadingTimeout: 10000, // 10 seconds
 };
 
+export function useSWRFetchApiDataPagination<T>(url: string, limit: number, page: number, apiOptions?: RequestInit, options?: SWRConfiguration): any {
+    const swrOptions = {
+        ...swrConfig,
+        ...options,
+    };
+
+    const fetcher = async () => {
+        try {
+            const response = await fetchApiDataPagination<PaginationResponse<T>>(url, limit, page, apiOptions);
+            console.log('useSWRFetchApiDataPagination', response);
+            return response;
+        } catch (error) {
+            console.error('Fetcher error:', error);
+            throw error;
+        }
+    };
+
+    return useSWR<PaginationResponse<T>>(url, fetcher, swrOptions);
+}
+
 export function useSWRFetchApiData<T>(url: string, apiOptions?: RequestInit, options?: SWRConfiguration): any {
     const swrOptions = {
         ...swrConfig,
@@ -24,11 +44,7 @@ export function useSWRFetchApiData<T>(url: string, apiOptions?: RequestInit, opt
 
     const fetcher = async () => {
         try {
-            const response = await fetchApiData<BaseResponseType<T>>(url, apiOptions);
-            if (!response.success) {
-                throw new Error(response.error || 'Failed to fetch data');
-            }
-            console.log('Response:', response);
+            const response = await fetchApiData<SuccessResponse<T>>(url, apiOptions);
             return response;
         } catch (error) {
             console.error('Fetcher error:', error);
@@ -36,9 +52,7 @@ export function useSWRFetchApiData<T>(url: string, apiOptions?: RequestInit, opt
         }
     };
 
-    const response = useSWR<BaseResponseType<T>>(url, fetcher, swrOptions);
-
-    return response;
+    return useSWR<SuccessResponse<T>>(url, fetcher, swrOptions);
 }
 
 export function useSWRPostApiData<T>(url: string, data: any, apiOptions?: RequestInit, options?: SWRConfiguration) {
@@ -49,10 +63,7 @@ export function useSWRPostApiData<T>(url: string, data: any, apiOptions?: Reques
 
     const fetcher = async () => {
         try {
-            const response = await postApiData<BaseResponseType<T>>(url, data, apiOptions);
-            if (!response.success) {
-                throw new Error(response.error || 'Failed to post data');
-            }
+            const response = await postApiData<SuccessResponse<T>>(url, data, apiOptions);
             return response.data;
         } catch (error) {
             console.error('Fetcher error:', error);
@@ -78,10 +89,7 @@ export function useSWRPutApiData<T>(url: string, data: any, apiOptions?: Request
 
     const fetcher = async () => {
         try {
-            const response = await putApiData<BaseResponseType<T>>(url, data, apiOptions);
-            if (!response.success) {
-                throw new Error(response.error || 'Failed to update data');
-            }
+            const response = await putApiData<SuccessResponse<T>>(url, data, apiOptions);
             return response.data;
         } catch (error) {
             console.error('Fetcher error:', error);
@@ -107,10 +115,7 @@ export function useSWRDeleteApiData<T>(url: string, apiOptions?: RequestInit, op
 
     const fetcher = async () => {
         try {
-            const response = await deleteApiData<BaseResponseType<T>>(url, apiOptions);
-            if (!response.success) {
-                throw new Error(response.error || 'Failed to delete data');
-            }
+            const response = await deleteApiData<SuccessResponse<T>>(url, apiOptions);
             return response.data;
         } catch (error) {
             console.error('Fetcher error:', error);
