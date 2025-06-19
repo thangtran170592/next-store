@@ -27,12 +27,13 @@ export const quickAccesses: QuickAccess[] = [
         url: '/how-to-buy',
         icon: RacingIcon
     },
-        {
+    {
         label: 'New NFTS',
         url: '/new-NFTS',
-        icon: LivecasinoIcon
+        icon: LivecasinoIcon,
+        subLabel: 'New'
     },
-        {
+    {
         label: 'Roadmaps',
         url: '/roadmaps',
         icon: MinigamesIcon

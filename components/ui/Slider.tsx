@@ -3,9 +3,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Slide } from '@/types/Slide';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import Image from 'next/image';
-import { AutoplayOptions } from 'swiper/types';
+import { AutoplayOptions, SwiperOptions } from 'swiper/types';
 import { mergeClass } from '@/lib/utils/mergeClass';
 
 type SliderPros = {
@@ -19,11 +19,20 @@ type SliderPros = {
     className?: string;
 };
 
-export default function Slider({ slides, autoplay = false, slidesPerView = 1, slidesPerGroup = 1, className }: SliderPros) {
+export default function Slider({
+    slides,
+    isNavigation = true,
+    isLoop = true,
+    autoplay = false,
+    slidesPerView = 1,
+    slidesPerGroup = 1,
+    className,
+}: SliderPros) {
     return (
         <div className='slide-container w-full mx-auto'>
             <Swiper
-                modules={[Autoplay, Pagination]}
+                modules={[Autoplay, Pagination, Navigation]}
+                navigation={isNavigation}
                 slidesPerView={slidesPerView}
                 slidesPerGroup={slidesPerGroup}
                 autoplay={
@@ -34,11 +43,11 @@ export default function Slider({ slides, autoplay = false, slidesPerView = 1, sl
                           }
                         : false
                 }
+                loop={isLoop}
                 pagination={{
                     clickable: true,
                     type: 'bullets',
                 }}
-                loop
                 className='w-full'
             >
                 {slides?.map((item, idx) => (

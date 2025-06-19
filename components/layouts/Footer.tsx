@@ -5,12 +5,12 @@ import InstallApp from '@/public/install-app.png';
 
 export default function Footer() {
     return (
-        <footer className='px-6 py-12'>
-            <div className='max-w-[1128px] font-barlow-semi-condensed mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8'>
+        <footer className='px-5 py-10 border-t border-t-neutral-subdued'>
+            <div className='max-w-[1128px] font-barlow-semi-condensed mx-auto grid grid-cols-2 md:grid-cols-4 gap-8'>
                 {/* ABOUT US */}
                 <div>
-                    <h3 className='font-bold uppercase mb-4 text-sm text-neutral-invert-normal'>About Us</h3>
-                    <ul className='space-y-2 text-sm text-neutral-accent-light'>
+                    <h3 className='font-black uppercase italic mb-3 text-lg text-neutral-invert-normal'>About Us</h3>
+                    <ul className='flex flex-col gap-2 md:text-sm text-xs text-neutral-accent-light'>
                         <li>
                             <Link href='/careers'>Careers</Link>
                         </li>
@@ -34,8 +34,8 @@ export default function Footer() {
 
                 {/* PRODUCTS */}
                 <div>
-                    <h3 className='font-bold uppercase mb-4 text-sm text-neutral-invert-normal'>Products</h3>
-                    <ul className='space-y-2 text-sm text-neutral-accent-light'>
+                    <h3 className='font-bold uppercase italic mb-3 text-lg text-neutral-invert-normal'>Products</h3>
+                    <ul className='flex flex-col gap-2 md:text-sm text-xs text-neutral-accent-light'>
                         <li>
                             <Link href='/marketplace'>NFT Marketplace</Link>
                         </li>
@@ -59,8 +59,8 @@ export default function Footer() {
 
                 {/* RESOURCES */}
                 <div>
-                    <h3 className='font-bold uppercase mb-4 text-sm text-neutral-invert-normal'>Resources</h3>
-                    <ul className='space-y-2 text-sm text-neutral-accent-light'>
+                    <h3 className='font-bold uppercase italic mb-3 text-lg text-neutral-invert-normal'>Resources</h3>
+                    <ul className='flex flex-col gap-2 md:text-sm text-xs  text-neutral-accent-light'>
                         <li>
                             <Link href='/support'>Support</Link>
                         </li>
@@ -81,8 +81,8 @@ export default function Footer() {
 
                 {/* CONTACT */}
                 <div>
-                    <h3 className='font-bold uppercase mb-4 text-sm text-neutral-invert-normal'>Contact Us</h3>
-                    <ul className='space-y-2 text-sm text-neutral-accent-light'>
+                    <h3 className='font-bold uppercase italic mb-3 text-lg  text-neutral-invert-normal'>Contact Us</h3>
+                    <ul className='flex flex-col gap-2 md:text-sm text-xs  text-neutral-accent-light'>
                         <li>
                             <Link href='mailto:support@tech.email'>support@tech.email</Link>
                         </li>
@@ -90,9 +90,18 @@ export default function Footer() {
                             <Link href='mailto:affiliate@tech.com'>affiliate@tech.com</Link>
                         </li>
                     </ul>
-                    <div className='mt-4'>
+                    <div className='mt-6'>
                         <Link href='/install-app' className='block hover:opacity-80'>
-                            <Image priority src={InstallApp} alt='Install app' className='object-cover' />
+                            <div className='relative w-[152px] h-11'>
+                                <Image
+                                    priority
+                                    src={InstallApp}
+                                    alt='Install app'
+                                    fill
+                                    sizes='auto'
+                                    className='object-cover'
+                                />
+                            </div>
                         </Link>
                     </div>
                 </div>

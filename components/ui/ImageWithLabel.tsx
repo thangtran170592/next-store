@@ -9,16 +9,18 @@ type ImageWithLabelProps = {
     className?: string;
 };
 
-export default function ImageWithLabel({ image, alt, label, url, className = '' }: ImageWithLabelProps) {
+export default function ImageWithLabel({ image, alt, label, url, className }: ImageWithLabelProps) {
     return (
         <div
-            className={mergeClass('flex flex-col gap-2', url ? 'cursor-pointer hover:opacity-80' : '', { className })}
+            className={mergeClass('flex flex-col gap-2', url && 'cursor-pointer hover:opacity-80')}
             onClick={() => url && window.open(url, '_blank')}
         >
             {label && (
-                <h2 className='font-barlow-semi-condensed text-primary-normal font-black uppercase italic text-[2em]/[1.5em]'>{label}</h2>
+                <h2 className='font-barlow-semi-condensed text-primary-normal font-black uppercase italic text-[1.5em]/[1.5] md:text-[2em]/[1.5]'>
+                    {label}
+                </h2>
             )}
-            <div className='relative w-full h-[245px] sm:h-[245px] md:h-[245px] lg:h-[245px]'>
+            <div className={mergeClass('relative w-full', className && `${className}`)}>
                 <Image
                     priority
                     src={image}

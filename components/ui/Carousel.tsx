@@ -35,17 +35,17 @@ export default function Carousel({
         320: {
             slidesPerView: 1,
             slidesPerGroup: 1,
-            spaceBetween: 16,
+            spaceBetween: 8,
         },
         480: {
             slidesPerView: 1,
             slidesPerGroup: 1,
-            spaceBetween: 16,
+            spaceBetween: 8,
         },
         640: {
             slidesPerView: 1,
             slidesPerGroup: 1,
-            spaceBetween: 16,
+            spaceBetween: 8,
         },
         768: {
             slidesPerView: 1,
@@ -69,7 +69,7 @@ export default function Carousel({
     return (
         <div className='carousel-container flex flex-col gap-2 w-full mx-auto'>
             {label && (
-                <h2 className='font-barlow-semi-condensed text-primary-normal font-black uppercase italic text-[2em]/[1.5em]'>{label}</h2>
+                <h2 className='font-barlow-semi-condensed text-primary-normal font-black uppercase italic text-[1.5em]/[1.5] md:text-[2em]/[1.5]'>{label}</h2>
             )}
             <Swiper
                 modules={[Autoplay, Navigation]}

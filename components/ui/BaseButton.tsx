@@ -21,9 +21,9 @@ const variantClass = {
 };
 
 const sizeClass = {
-    small: 'px-[1.75em] py-[0.25em] text-sm',
-    normal: 'px-[2em] py-[0.5em] text-base',
-    large: 'px-[2.25em] py-[0.75em] text-lg',
+    small: 'px-[1.25em] md:px-[1.75em] py-[0.175em] md:py-[0.25em] text-sm',
+    normal: 'px-[1.5em] md:px-[2em] py-[0.375em] md:py-[0.5em] text-base',
+    large: 'px-[1.75em] md:px-[2.25em] py-[0.5em] md:py-[0.75em] text-lg',
 };
 
 export default function BaseButton({
