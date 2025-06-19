@@ -6,32 +6,64 @@ import 'swiper/css/navigation';
 import { Slide } from '@/types/Slide';
 import 'styles/carousel.scss'; // Ensure you have a CSS file for custom styles
 
-import { Navigation } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import { useState } from 'react';
 import { mergeClass } from '@/lib/utils/mergeClass';
+import { AutoplayOptions, SwiperOptions } from 'swiper/types';
 
 type CarouselPros = {
     label?: string;
     slides: Slide[];
-    spaceBetween?: number;
-    slidesPerView?: number;
-    slidesPerGroup?: number;
-    hasNavigation?: boolean;
-    hasLoop?: boolean;
+    isNavigation?: boolean;
+    isLoop?: boolean;
+    autoplay?: boolean | AutoplayOptions;
     className?: string;
-    aspectRatio?: string; // Optional aspect ratio for slides
+    breakpoints?: {
+        [width: number]: SwiperOptions;
+        [ratio: string]: SwiperOptions;
+    };
 };
 
 export default function Carousel({
     label,
     slides,
-    spaceBetween = 16,
-    slidesPerView = 1,
-    slidesPerGroup = 1,
-    hasNavigation = false,
-    hasLoop = false,
-    aspectRatio,
+    isNavigation = true,
+    isLoop = true,
+    autoplay = false,
+    breakpoints = {
+        320: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 16,
+        },
+        480: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 16,
+        },
+        640: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 16,
+        },
+        768: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 16,
+        },
+        1024: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 16,
+        },
+        1280: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 16,
+        },
+    },
+    className,
 }: CarouselPros) {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     return (
@@ -40,30 +72,28 @@ export default function Carousel({
                 <h2 className='font-barlow-semi-condensed text-primary-normal font-black uppercase italic text-[2em]/[1.5em]'>{label}</h2>
             )}
             <Swiper
-                modules={[Navigation]}
-                spaceBetween={spaceBetween}
-                slidesPerView={slidesPerView}
-                slidesPerGroup={slidesPerGroup}
-                navigation={hasNavigation}
-                loop={hasLoop}
+                modules={[Autoplay, Navigation]}
+                navigation={isNavigation}
+                autoplay={
+                    autoplay
+                        ? {
+                              delay: 3000,
+                              disableOnInteraction: false,
+                          }
+                        : false
+                }
+                loop={isLoop}
+                breakpoints={breakpoints}
                 className='w-full'
             >
                 {slides?.map((item, idx) => (
-                    <SwiperSlide
-                        key={idx}
-                        onClick={() => setActiveIndex(idx)}
-                        className={`carousel-slide ${activeIndex === idx ? 'active' : ''}`}
-                    >
-                        <div
-                            className={mergeClass(
-                                'relative w-full overflow-hidden rounded-2xl',
-                                aspectRatio ? `aspect-${aspectRatio}` : 'aspect-[3/2]',
-                            )}
-                        >
+                    <SwiperSlide key={idx} onClick={() => setActiveIndex(idx)} className='carousel-slide'>
+                        <div className={mergeClass('relative w-full', activeIndex === idx && 'active', className && `${className}`)}>
                             <Image
                                 src={item.image}
-                                alt={`NFT ${idx}`}
+                                alt={`NFT ${item.title}`}
                                 fill
+                                priority={idx === 0}
                                 sizes='(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 25vw'
                                 className='object-cover rounded-xl'
                             />

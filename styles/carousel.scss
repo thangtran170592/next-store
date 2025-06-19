@@ -64,8 +64,10 @@
 
     .swiper-slide {
         height: 245px;
-        &.active {
+
+        .active {
             border: 4px solid var(--primary-normal);
+            border-radius: 0.75em;
         }
     }
 }

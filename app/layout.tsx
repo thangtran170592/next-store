@@ -4,59 +4,28 @@ import Header from '@/components/layouts/Header';
 import Footer from '@/components/layouts/Footer';
 
 export const metadata: Metadata = {
-    metadataBase: new URL('http://localhost:3000'),
-    title: {
-        default: 'Your Store Name',
-        template: '%s | Your Store Name',
-    },
-    description: 'Your one-stop shop for all your needs. Browse our wide selection of products and services.',
-    keywords: ['store', 'shopping', 'e-commerce', 'online store', 'retail'],
-    authors: [{ name: 'Your Name' }],
-    creator: 'Your Name',
-    publisher: 'Your Company Name',
-    formatDetection: {
-        email: false,
-        address: false,
-        telephone: false,
-    },
+    title: 'Trang chủ - NFT',
+    description: 'Tech là nền tảng NFT tốt nhất cho người mới bắt đầu.',
     openGraph: {
-        type: 'website',
-        locale: 'en_US',
-        url: 'http://localhost:3000',
-        siteName: 'Your Store Name',
-        title: 'Your Store Name',
-        description: 'Your one-stop shop for all your needs. Browse our wide selection of products and services.',
+        title: 'Trang chủ Tech',
+        description: 'NFT, thị trường giao dịch, bộ sưu tập.',
+        url: 'https://nft.vn',
+        siteName: 'nft NFT',
         images: [
             {
-                url: '/og-image.jpg',
+                url: 'https://nft.vn/og-image.png',
                 width: 1200,
                 height: 630,
-                alt: 'Your Store Name',
             },
         ],
+        locale: 'vi_VN',
+        type: 'website',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Your Store Name',
-        description: 'Your one-stop shop for all your needs. Browse our wide selection of products and services.',
-        images: ['/twitter-image.jpg'],
-        creator: 'Thang',
-    },
-    robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-            index: true,
-            follow: true,
-            'max-video-preview': -1,
-            'max-image-preview': 'large',
-            'max-snippet': -1,
-        },
-    },
-    icons: {
-        icon: [{ url: '/icon-x-16.png', sizes: '16x16', type: 'image/png' }],
-        shortcut: '/icon-x-16.png',
-        apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+        title: 'nft NFT',
+        description: 'NFT dành cho tất cả mọi người',
+        images: ['https://nft.vn/og-image.png'],
     },
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
