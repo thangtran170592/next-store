@@ -5,6 +5,11 @@ import Footer from '@/components/layouts/Footer';
 
 export const metadata: Metadata = {
     title: 'Trang chủ - NFT',
+    icons: {
+        icon: '/mobile-logo.svg',
+        shortcut: '/mobile-logo.svg',
+        apple: '/mobile-logo.svg',
+    },
     description: 'Tech là nền tảng NFT tốt nhất cho người mới bắt đầu.',
     openGraph: {
         title: 'Trang chủ Tech',
