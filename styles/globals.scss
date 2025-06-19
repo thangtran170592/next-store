@@ -1,3 +1,64 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --primary-normal: #ffc700;
+    --primary-accent: #c79b12;
+    --Primary-subdued: #ffe8ab;
+    --secondary: #ffcc5b;
+    --neutral-accent-light: #d2d2d2;
+    --neutral-invert-normal: #ffffff;
+    --neutral-invert-accent: #1f1f1f;
+    --neutral-accent: #131415;
+    --neutral-normal: #1f2023;
+    --neutral-subdued: #383a42;
+}
+
+@font-face {
+    font-family: 'Neue Haas Grotesk Text Pro';
+    src: url('/fonts/neue-haas-grotesk/NeueHaasDisplay-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Neue Haas Grotesk Text Pro';
+    src: url('/fonts/neue-haas-grotesk/NeueHaasDisplay-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Neue Haas Grotesk Text Pro';
+    src: url('/fonts/neue-haas-grotesk/NeueHaasDisplay-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Barlow Semi Condensed';
+    src: url('/fonts/barlow-semi-condensed/BarlowSemiCondensed-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Barlow Semi Condensed';
+    src: url('/fonts/barlow-semi-condensed/BarlowSemiCondensed-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Barlow Semi Condensed';
+    src: url('/fonts/barlow-semi-condensed/BarlowSemiCondensed-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}

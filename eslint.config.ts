@@ -13,6 +13,7 @@ const eslintConfig = [
     ...compat.extends('next/core-web-vitals', 'next/typescript'),
     {
         rules: {
+            '@next/next/no-img-element': 'off',
             '@typescript-eslint/no-explicit-any': 'off',
             'padding-line-between-statements': [
                 'error',
@@ -21,6 +22,15 @@ const eslintConfig = [
                 { blankLine: 'always', prev: 'block-like', next: 'function' },
             ],
         },
+        overrides: [
+            {
+                files: ['**/*.tsx'],
+                excludedFiles: ['**/page.tsx', '**/layout.tsx', '**/loading.tsx', '**/error.tsx'],
+                rules: {
+                    'filenames/match-regex': ['error', '^[A-Z][a-zA-Z0-9]*$', true],
+                },
+            },
+        ],
     },
 ];
 

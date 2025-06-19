@@ -1,2 +1,2 @@
-export * from './base-response';
-export * from './http';
+export * from './Slide';
+export * from './Menu';
