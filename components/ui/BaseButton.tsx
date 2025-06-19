@@ -17,7 +17,7 @@ type BaseButtonProps = {
 
 const variantClass = {
     primary: 'bg-primary-normal text-neutral-invert-accent hover:bg-primary-accent',
-    secondary: 'border bg-transparent text-neutral-accent-light hover:bg-primary-subdued',
+    secondary: 'border border-primary-normal bg-transparent text-neutral-accent-light hover:border-primary-subdued',
 };
 
 const sizeClass = {

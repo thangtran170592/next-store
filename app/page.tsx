@@ -78,6 +78,7 @@ export default function Page() {
                                     image={nftHot}
                                     alt='NFT Hot'
                                     label='Hot NFT'
+                                    url='/nft-hot'
                                     className='h-[170px] md:h-[240px] lg:h-[240px] rounded-2xl'
                                 />
                             </div>
@@ -86,6 +87,7 @@ export default function Page() {
                                     image={nftPromotion}
                                     alt='Promotion'
                                     label='Promotion'
+                                    url='/promotion'
                                     className='h-[170px] md:h-[240px] lg:h-[240px] rounded-2xl'
                                 />
                             </div>
